@@ -1,0 +1,44 @@
+{
+  "name": "WorkTemplateItem",
+  "fields": [
+    {
+      "fieldName": "task",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "requiredToComplete",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "sequenceOrder",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "workTemplateItemPreReq",
+      "otherEntityRelationshipName": "workTemplateItem",
+      "relationshipName": "workTemplateItemPreReq"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "workTemplate",
+      "otherEntityRelationshipName": "workTemplateItem",
+      "relationshipName": "workTemplate"
+    }
+  ],
+  "entityTableName": "work_template_item",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210913141559"
+}

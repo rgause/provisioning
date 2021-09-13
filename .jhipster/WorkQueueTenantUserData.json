@@ -1,0 +1,33 @@
+{
+  "name": "WorkQueueTenantUserData",
+  "fields": [
+    {
+      "fieldName": "data",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "workQueueTenantUser",
+      "otherEntityRelationshipName": "workQueueTenantUserData",
+      "relationshipName": "workQueueTenantUser"
+    }
+  ],
+  "entityTableName": "work_queue_tenant_user_data",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210913141605"
+}

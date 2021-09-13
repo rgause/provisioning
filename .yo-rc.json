@@ -43,7 +43,27 @@
     "devServerPort": 9060,
     "clientTheme": "none",
     "clientThemeVariant": "",
-    "reactive": false
+    "reactive": false,
+    "entities": [
+      "TenantType",
+      "Tenant",
+      "URLType",
+      "URL",
+      "TenantPropertyKey",
+      "TenantProperty",
+      "LanUser",
+      "TenantUser",
+      "WorkTemplate",
+      "WorkTemplateItem",
+      "WorkTemplateItemPreReq",
+      "WorkQueueTenant",
+      "WorkQueueTenantData",
+      "WorkQueueTenantPreReq",
+      "WorkQueueTenantUser",
+      "WorkQueueTenantUserData",
+      "WorkQueueTenantUserPreReq"
+    ],
+    "lastLiquibaseTimestamp": 1631542566000
   },
   "git-provider": "GitHub",
   "git-company": "rgause",

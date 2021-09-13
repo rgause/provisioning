@@ -1,0 +1,34 @@
+{
+  "name": "URL",
+  "fields": [
+    {
+      "fieldName": "url",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "uRLType",
+      "otherEntityRelationshipName": "uRL",
+      "relationshipName": "urlType"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "tenant",
+      "otherEntityRelationshipName": "uRL",
+      "relationshipName": "tenant"
+    }
+  ],
+  "entityTableName": "url",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210913141553"
+}

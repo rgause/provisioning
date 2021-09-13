@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <!--
+        Added the constraints for entity WorkQueueTenantUser.
+    -->
+    <changeSet id="20210913141604-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="tenant_user_id"
+                                 baseTableName="work_queue_tenant_user"
+                                 constraintName="fk_work_queue_tenant_user__tenant_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tenant_user"/>
+    </changeSet>
+</databaseChangeLog>

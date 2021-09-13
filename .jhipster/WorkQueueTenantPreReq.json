@@ -1,0 +1,28 @@
+{
+  "name": "WorkQueueTenantPreReq",
+  "fields": [
+    {
+      "fieldName": "preRequisiteItem",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "workQueueTenant",
+      "otherEntityRelationshipName": "workQueueTenantPreReq",
+      "relationshipName": "workQueueItem"
+    }
+  ],
+  "entityTableName": "work_queue_tenant_pre_req",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210913141603"
+}

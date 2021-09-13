@@ -1,0 +1,71 @@
+{
+  "name": "Tenant",
+  "fields": [
+    {
+      "fieldName": "active",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "provisioned",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "frpId",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "frpName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "frpContractTypeCode",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "frpContractTypeIndicator",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "tenantProperty",
+      "otherEntityRelationshipName": "tenant",
+      "relationshipName": "tenantProperty"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "tenantUser",
+      "otherEntityRelationshipName": "tenant",
+      "relationshipName": "tenantUser"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "workQueueTenant",
+      "otherEntityRelationshipName": "tenant",
+      "relationshipName": "workQueueTenant"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "tenantType",
+      "otherEntityRelationshipName": "tenant",
+      "relationshipName": "tenantType"
+    }
+  ],
+  "entityTableName": "tenant",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210913141551"
+}
