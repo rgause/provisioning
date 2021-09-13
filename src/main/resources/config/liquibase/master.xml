@@ -15,7 +15,36 @@
     <property name="datetimeType" value="datetime" dbms="oracle, mssql, postgresql, h2"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210913141550_added_entity_TenantType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210913141551_added_entity_Tenant.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210913141552_added_entity_URLType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210913141553_added_entity_URL.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210913141554_added_entity_TenantPropertyKey.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210913141555_added_entity_TenantProperty.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210913141556_added_entity_LanUser.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210913141557_added_entity_TenantUser.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210913141558_added_entity_WorkTemplate.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210913141559_added_entity_WorkTemplateItem.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210913141600_added_entity_WorkTemplateItemPreReq.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210913141601_added_entity_WorkQueueTenant.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210913141602_added_entity_WorkQueueTenantData.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210913141603_added_entity_WorkQueueTenantPreReq.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210913141604_added_entity_WorkQueueTenantUser.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210913141605_added_entity_WorkQueueTenantUserData.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210913141606_added_entity_WorkQueueTenantUserPreReq.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20210913141551_added_entity_constraints_Tenant.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210913141553_added_entity_constraints_URL.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210913141555_added_entity_constraints_TenantProperty.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210913141557_added_entity_constraints_TenantUser.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210913141559_added_entity_constraints_WorkTemplateItem.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210913141600_added_entity_constraints_WorkTemplateItemPreReq.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210913141601_added_entity_constraints_WorkQueueTenant.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210913141602_added_entity_constraints_WorkQueueTenantData.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210913141603_added_entity_constraints_WorkQueueTenantPreReq.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210913141604_added_entity_constraints_WorkQueueTenantUser.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210913141605_added_entity_constraints_WorkQueueTenantUserData.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210913141606_added_entity_constraints_WorkQueueTenantUserPreReq.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

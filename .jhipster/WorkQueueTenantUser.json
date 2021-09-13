@@ -1,0 +1,62 @@
+{
+  "name": "WorkQueueTenantUser",
+  "fields": [
+    {
+      "fieldName": "task",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "requiredToComplete",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dateCreated",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dateCancelled",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dateCompleted",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "sequenceOrder",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "workQueueTenantUserData",
+      "otherEntityRelationshipName": "workQueueTenantUser",
+      "relationshipName": "workQueueTenantUserData"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "workQueueTenantUserPreReq",
+      "otherEntityRelationshipName": "workQueueTenantUser",
+      "relationshipName": "workQueueTenantUserPreReq"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "tenantUser",
+      "otherEntityRelationshipName": "workQueueTenantUser",
+      "relationshipName": "tenantUser"
+    }
+  ],
+  "entityTableName": "work_queue_tenant_user",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210913141604"
+}

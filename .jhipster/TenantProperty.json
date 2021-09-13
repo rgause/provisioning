@@ -1,0 +1,34 @@
+{
+  "name": "TenantProperty",
+  "fields": [
+    {
+      "fieldName": "value",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "tenant",
+      "otherEntityRelationshipName": "tenantProperty",
+      "relationshipName": "tenant"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "tenantPropertyKey",
+      "otherEntityRelationshipName": "tenantProperty",
+      "relationshipName": "tenantPropertyKey"
+    }
+  ],
+  "entityTableName": "tenant_property",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210913141555"
+}

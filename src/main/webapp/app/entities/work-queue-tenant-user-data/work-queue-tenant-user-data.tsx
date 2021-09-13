@@ -1,0 +1,116 @@
+import React, { useState, useEffect } from 'react';
+import { Link, RouteComponentProps } from 'react-router-dom';
+import { Button, Col, Row, Table } from 'reactstrap';
+import { Translate } from 'react-jhipster';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import { getEntities } from './work-queue-tenant-user-data.reducer';
+import { IWorkQueueTenantUserData } from 'app/shared/model/work-queue-tenant-user-data.model';
+import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
+import { useAppDispatch, useAppSelector } from 'app/config/store';
+
+export const WorkQueueTenantUserData = (props: RouteComponentProps<{ url: string }>) => {
+  const dispatch = useAppDispatch();
+
+  const workQueueTenantUserDataList = useAppSelector(state => state.workQueueTenantUserData.entities);
+  const loading = useAppSelector(state => state.workQueueTenantUserData.loading);
+
+  useEffect(() => {
+    dispatch(getEntities({}));
+  }, []);
+
+  const handleSyncList = () => {
+    dispatch(getEntities({}));
+  };
+
+  const { match } = props;
+
+  return (
+    <div>
+      <h2 id="work-queue-tenant-user-data-heading" data-cy="WorkQueueTenantUserDataHeading">
+        Work Queue Tenant User Data
+        <div className="d-flex justify-content-end">
+          <Button className="mr-2" color="info" onClick={handleSyncList} disabled={loading}>
+            <FontAwesomeIcon icon="sync" spin={loading} /> Refresh List
+          </Button>
+          <Link to={`${match.url}/new`} className="btn btn-primary jh-create-entity" id="jh-create-entity" data-cy="entityCreateButton">
+            <FontAwesomeIcon icon="plus" />
+            &nbsp; Create new Work Queue Tenant User Data
+          </Link>
+        </div>
+      </h2>
+      <div className="table-responsive">
+        {workQueueTenantUserDataList && workQueueTenantUserDataList.length > 0 ? (
+          <Table responsive>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Data</th>
+                <th>Type</th>
+                <th>Work Queue Tenant User</th>
+                <th />
+              </tr>
+            </thead>
+            <tbody>
+              {workQueueTenantUserDataList.map((workQueueTenantUserData, i) => (
+                <tr key={`entity-${i}`} data-cy="entityTable">
+                  <td>
+                    <Button tag={Link} to={`${match.url}/${workQueueTenantUserData.id}`} color="link" size="sm">
+                      {workQueueTenantUserData.id}
+                    </Button>
+                  </td>
+                  <td>{workQueueTenantUserData.data}</td>
+                  <td>{workQueueTenantUserData.type}</td>
+                  <td>
+                    {workQueueTenantUserData.workQueueTenantUser ? (
+                      <Link to={`work-queue-tenant-user/${workQueueTenantUserData.workQueueTenantUser.id}`}>
+                        {workQueueTenantUserData.workQueueTenantUser.id}
+                      </Link>
+                    ) : (
+                      ''
+                    )}
+                  </td>
+                  <td className="text-right">
+                    <div className="btn-group flex-btn-group-container">
+                      <Button
+                        tag={Link}
+                        to={`${match.url}/${workQueueTenantUserData.id}`}
+                        color="info"
+                        size="sm"
+                        data-cy="entityDetailsButton"
+                      >
+                        <FontAwesomeIcon icon="eye" /> <span className="d-none d-md-inline">View</span>
+                      </Button>
+                      <Button
+                        tag={Link}
+                        to={`${match.url}/${workQueueTenantUserData.id}/edit`}
+                        color="primary"
+                        size="sm"
+                        data-cy="entityEditButton"
+                      >
+                        <FontAwesomeIcon icon="pencil-alt" /> <span className="d-none d-md-inline">Edit</span>
+                      </Button>
+                      <Button
+                        tag={Link}
+                        to={`${match.url}/${workQueueTenantUserData.id}/delete`}
+                        color="danger"
+                        size="sm"
+                        data-cy="entityDeleteButton"
+                      >
+                        <FontAwesomeIcon icon="trash" /> <span className="d-none d-md-inline">Delete</span>
+                      </Button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        ) : (
+          !loading && <div className="alert alert-warning">No Work Queue Tenant User Data found</div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default WorkQueueTenantUserData;
