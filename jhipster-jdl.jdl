@@ -1,0 +1,142 @@
+entity TenantType {
+	// org, manufacturer
+	name String required unique
+}
+
+entity Tenant {
+    active Boolean required,
+    provisioned Boolean required,
+    frpId String required
+    frpName String required unique,
+    frpContractTypeCode String required
+    frpContractTypeIndicator String required
+}
+
+entity URLType {
+	// tableau site, wb1, wb2, etc
+	name String required unique
+}
+
+entity URL {
+	// tableau site & snowflake URL's
+	url String required
+}
+
+entity TenantPropertyKey {
+	// org, mfr, lob, tenant_pwp_grp_1, aws_id, pwp_id
+	name String required unique
+}
+
+entity TenantProperty {
+	// org, mfr, lob, tenant_pwp_grp_1 values
+    value String required
+}
+
+entity LanUser {
+	// a pwp user - assuming pwpId is unique
+    active Boolean required,
+	lanId String required unique,
+	pwpId String required,
+    lastName String required,
+    firstName String required
+}
+
+entity TenantUser {
+	// map a user to a tenant
+	active Boolean required,
+    provisioned Boolean required
+}
+
+entity WorkTemplate {
+	// activate a tenant,
+    // add & activate a tenant user
+	name String required
+}
+
+entity WorkTemplateItem {
+	// the steps for a unit of work
+	task String required
+    requiredToComplete Boolean required
+    sequenceOrder BigDecimal required
+}
+
+entity WorkTemplateItemPreReq {
+	// pre-req's for a step (could be more than 1)
+	preRequisiteItem BigDecimal required
+}
+
+entity WorkQueueTenant {
+	// tenant work steps that need to be completed
+	task String required,
+    requiredToComplete Boolean required,
+    dateCreated LocalDate
+	dateCancelled LocalDate,
+    dateCompleted LocalDate,
+    sequenceOrder BigDecimal required
+}
+
+entity WorkQueueTenantData {
+	// data saved as part of a work item
+	data String required,
+    type String required
+}
+
+entity WorkQueueTenantPreReq {
+	// pre-req's for a step (could be more than 1)
+	preRequisiteItem BigDecimal required
+}
+
+entity WorkQueueTenantUser {
+	// tenant user work steps that need to be completed
+	task String required,
+    requiredToComplete Boolean required,
+    dateCreated LocalDate,
+	dateCancelled LocalDate,
+    dateCompleted LocalDate,
+    sequenceOrder BigDecimal required
+}
+
+entity WorkQueueTenantUserData {
+	// data saved as part of a work item
+    data String required,
+    type String required
+}
+
+entity WorkQueueTenantUserPreReq {
+	// pre-req's for a step (could be more than 1)
+	preRequisiteItem BigDecimal required
+}
+
+relationship ManyToOne {
+	URL{urlType} to URLType,
+    URL{tenant} to Tenant,
+    Tenant{tenantType} to TenantType
+}
+
+//relationship ManyToMany {
+//	Job{task(title)} to Task{job}
+//}
+
+relationship OneToMany {
+	Tenant to TenantProperty{tenant},
+	TenantPropertyKey to TenantProperty{tenantPropertyKey},
+    LanUser to TenantUser{lanUser},
+    Tenant to TenantUser{tenant},
+    Tenant to WorkQueueTenant{tenant},
+    TenantUser to WorkQueueTenantUser{tenantUser},
+    WorkTemplate to WorkTemplateItem{workTemplate},
+    WorkTemplateItem to WorkTemplateItemPreReq{workTemplateItem},
+    WorkQueueTenant to WorkQueueTenantData{workQueueTenant},
+    WorkQueueTenant to WorkQueueTenantPreReq{workQueueItem},    
+    WorkQueueTenantUser to WorkQueueTenantUserData{workQueueTenantUser},
+    WorkQueueTenantUser to WorkQueueTenantUserPreReq{workQueueTenantUser}
+}
+
+//relationship ManyToOne {
+//	Employee{manager} to Employee
+//}
+
+
+// Set pagination options
+//paginate JobHistory, Employee with infinite-scroll
+//paginate Job with pagination
